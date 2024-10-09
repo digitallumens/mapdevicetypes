@@ -4,33 +4,35 @@ import (
 	"embed"
 	"encoding/json"
 	"fmt"
-	"os"
 )
+
+// Global to hold json file contents after Init()
+var deviceTypes DeviceTypes
 
 // EMBED THE mapdevicetypes.json FILE ••••••••••••••••••••••••••
 //
 //go:embed mapdevicetypes.json
 var embeddedFile embed.FS
 
-const DeviceTypesFile = "mapdevicetypes.json"
+const DeviceTypesFileName = "mapdevicetypes.json"
 
-// Device capability attributes
+// Device capability attributes bitfield
 const (
-	Light     = 0x00000001
-	Temp      = 0x00000002
-	Humidity  = 0x00000004
-	Pressure  = 0x00000008
-	Power     = 0x00000010
-	Keypad    = 0x00000020
-	Flow      = 0x00000040
-	Leak      = 0x00000080
-	DigitalIO = 0x00000100
+	Light uint32 = 1 << iota
+	Temp
+	Humidity
+	Pressure
+	Power
+	Keypad
+	Flow
+	Leak
+	DigitalIO
 )
 
 type DeviceType struct {
-	Name       string `json:"name,omitempty"`
-	ProdCode   uint32 `json:"prodcode,omitempty"`
-	Capability uint32 `json:"capability,omitempty"`
+	Name       string `json:"name"`
+	ProdCode   uint32 `json:"prod_code"`
+	Capability uint32 `json:"capability"`
 }
 
 type DeviceTypes struct {
@@ -80,8 +82,10 @@ func CapabilityStr(cap uint32) string {
 }
 
 func GetCapabilities(name string) (uint32, error) {
-	dts := GetKnownDeviceTypes()
-	for _, dt := range dts.Types {
+	if !Init() {
+		return 0, fmt.Errorf("Init failed")
+	}
+	for _, dt := range deviceTypes.Types {
 		if dt.Name == name {
 			return dt.Capability, nil
 		}
@@ -90,8 +94,10 @@ func GetCapabilities(name string) (uint32, error) {
 }
 
 func HasCapability(name string, capability uint32) (bool, error) {
-	dts := GetKnownDeviceTypes()
-	for _, dt := range dts.Types {
+	if !Init() {
+		return false, fmt.Errorf("Init failed")
+	}
+	for _, dt := range deviceTypes.Types {
 		if dt.Name == name {
 			return (dt.Capability&capability != 0), nil
 		}
@@ -103,59 +109,20 @@ func HasCapability(name string, capability uint32) (bool, error) {
 // Programatically creates a slice with all known device types
 //
 
-func GetKnownDeviceTypes() DeviceTypes {
-	var dt DeviceType
-	var dts DeviceTypes
-
-	dts.Version = 1
-
-	dt = DeviceType{Name: "SCN", ProdCode: 0x00000000, Capability: Light}
-	dts.Types = append(dts.Types, dt)
-	dt = DeviceType{Name: "TRH", ProdCode: 0x00000000, Capability: (Temp | Humidity)}
-	dts.Types = append(dts.Types, dt)
-	dt = DeviceType{Name: "WIO", ProdCode: 0x00000000, Capability: DigitalIO}
-	dts.Types = append(dts.Types, dt)
-
-	dt = DeviceType{Name: "Generic Light", ProdCode: 0x00000000, Capability: Light}
-	dts.Types = append(dts.Types, dt)
-	dt = DeviceType{Name: "Generic Temp Sensor", ProdCode: 0x00000000, Capability: Temp}
-	dts.Types = append(dts.Types, dt)
-	dt = DeviceType{Name: "Generic Humidity Sensor", ProdCode: 0x00000000, Capability: Humidity}
-	dts.Types = append(dts.Types, dt)
-	dt = DeviceType{Name: "Generic Pressure Meter", ProdCode: 0x00000000, Capability: Pressure}
-	dts.Types = append(dts.Types, dt)
-	dt = DeviceType{Name: "Generic Power Meter", ProdCode: 0x00000000, Capability: Power}
-	dts.Types = append(dts.Types, dt)
-	dt = DeviceType{Name: "Generic Keypad", ProdCode: 0x00000000, Capability: Keypad}
-	dts.Types = append(dts.Types, dt)
-	dt = DeviceType{Name: "Generic Flow Meter", ProdCode: 0x00000000, Capability: Flow}
-	dts.Types = append(dts.Types, dt)
-	dt = DeviceType{Name: "Generic Leak Sensor", ProdCode: 0x00000000, Capability: Leak}
-	dts.Types = append(dts.Types, dt)
-	dt = DeviceType{Name: "Generic Leak Sensor", ProdCode: 0x00000000, Capability: Leak}
-	dts.Types = append(dts.Types, dt)
-
-	return dts
-}
-
-//
-// Write a json file of known device types that can presumably be consumed by CommissionerZ
-//
-
-func WriteKnownDeviceTypes() error {
-	dts := GetKnownDeviceTypes()
-
-	jsonData, err := json.MarshalIndent(dts, "", "  ")
-	if err != nil {
-		return err
+func Init() bool {
+	if deviceTypes.Version == 0 {
+		var err error
+		var bytes []byte
+		bytes, err = embeddedFile.ReadFile(DeviceTypesFileName)
+		if err != nil {
+			fmt.Printf("%s\n", err)
+			return false
+		}
+		err = json.Unmarshal(bytes, &deviceTypes)
+		if err != nil {
+			fmt.Printf("%s\n", err)
+			return false
+		}
 	}
-
-	err = os.WriteFile(DeviceTypesFile, jsonData, 0644)
-	if err != nil {
-		fmt.Printf("%s\n", err)
-		return err
-	}
-
-	fmt.Printf("Successfully wrote %q\n", DeviceTypesFile)
-	return nil
+	return true
 }

@@ -30,5 +30,5 @@ func TestGetCapabilities(t *testing.T) {
 	assert.Equal(t, cap, Light, "SCN should be Light")
 	cap, err = GetCapabilities("TRH")
 	assert.Nil(t, err)
-	assert.Equal(t, cap, true, "TRH should have Temp and Humidity")
+	assert.Equal(t, cap, (Temp | Humidity), "TRH should have Temp and Humidity")
 }
