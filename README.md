@@ -3,7 +3,7 @@
 This package tracks known/supported Zigbee3 Devices and their capabilities for SiteWorx.
 Data comes from the `mapdevicetypes.json` file, which is consumed/served by the package.
 
-`CommissionerZ` will use the json file for map creation options, and `site-editor` and `siteworx-cli` will use the information for map uploading and remote commissioning information respectively.
+`CommissionerZ` will use the json file for map creation, and `site-editor` and `siteworx-cli` will use the information for map uploading and remote commissioning information respectively.
 
 **Usage:**
 
@@ -13,9 +13,9 @@ Data comes from the `mapdevicetypes.json` file, which is consumed/served by the 
 
 ```
 type DeviceType struct {
-	Name       string `json:"name,omitempty"`
-	ProdCode   uint32 `json:"prodcode,omitempty"`
-	Capability uint32 `json:"capability,omitempty"`
+	Name       string `json:"name"`
+	ProdCode   uint32 `json:"prodcode"`
+	Capability uint32 `json:"capability"`
 }
 
 type DeviceTypes struct {
