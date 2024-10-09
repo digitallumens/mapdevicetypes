@@ -1,6 +1,3 @@
-// Package fixturecharacterizations defines an interface to access the
-// contents of a fixtures.xml file
-
 package mapdevicetypes
 
 import (
@@ -102,6 +99,10 @@ func HasCapability(name string, capability uint32) (bool, error) {
 	return false, fmt.Errorf("Device %q not found", name)
 }
 
+//
+// Programatically creates a slice with all known device types
+//
+
 func GetKnownDeviceTypes() DeviceTypes {
 	var dt DeviceType
 	var dts DeviceTypes
@@ -137,7 +138,10 @@ func GetKnownDeviceTypes() DeviceTypes {
 	return dts
 }
 
-// Output a json file that can presumably be consumed by CommissionerX
+//
+// Write a json file of known device types that can presumably be consumed by CommissionerZ
+//
+
 func WriteKnownDeviceTypes() error {
 	dts := GetKnownDeviceTypes()
 
