@@ -3,32 +3,40 @@ package mapdevicetypes
 // Test mapdevicetypes by running `go test` (or `go test -v`)
 
 import (
-	// "reflect"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 )
 
 func TestHasCapability(t *testing.T) {
-	b, err := HasCapability("SCN", Light)
+	b, err := HasCapability("SCN", capabilityLight)
 	assert.Nil(t, err)
-	assert.Equal(t, b, true, "SCN should be Light")
-	b, err = HasCapability("TRH", Temp)
+	assert.Equal(t, b, true, "SCN should have Light")
+
+	b, err = CapabilityIsTrue("SCN", capabilityLight)
+	assert.Nil(t, err)
+	assert.Equal(t, b, true, "SCN Light should be true")
+
+	b, err = HasCapability("TRH", capabilityTemperature)
 	assert.Nil(t, err)
 	assert.Equal(t, b, true, "TRH should have Temp")
-	b, err = HasCapability("TRH", Humidity)
+	b, err = HasCapability("TRH", capabilityHumidity)
 	assert.Nil(t, err)
 	assert.Equal(t, b, true, "TRH should have Humidity")
-	b, err = HasCapability("TRH", (Temp | Humidity))
-	assert.Nil(t, err)
-	assert.Equal(t, b, true, "TRH should have Temp and Humidity")
-}
 
-func TestGetCapabilities(t *testing.T) {
-	cap, err := GetCapabilities("SCN")
+	b, err = CapabilityIsTrue("TRH", capabilityTemperature)
 	assert.Nil(t, err)
-	assert.Equal(t, cap, Light, "SCN should be Light")
-	cap, err = GetCapabilities("TRH")
+	assert.Equal(t, b, true, "TRH Temp should be true")
+	b, err = CapabilityIsTrue("TRH", capabilityHumidity)
 	assert.Nil(t, err)
-	assert.Equal(t, cap, (Temp | Humidity), "TRH should have Temp and Humidity")
+	assert.Equal(t, b, true, "TRH Humidity should be true")
+
+	// raw get value defaults to float64 because interface{}
+	ctf64, err := GetCapabilityValue("WIO", capabilityNumAnalogChannels)
+	assert.Nil(t, err)
+	assert.Equal(t, ctf64, 2.0, "WIO should have capabilityNumAnalogChannels = 2")
+
+	ct, err := GetCapabilityIntValue("WIO", capabilityNumAnalogChannels)
+	assert.Nil(t, err)
+	assert.Equal(t, ct, 2, "WIO should have capabilityNumAnalogChannels = 2")
 }

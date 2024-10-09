@@ -3,63 +3,91 @@
   "Types": [
     {
       "name": "SCN",
-      "capability": 1,
-      "prod_code": 0
+      "prod_code": "0",
+      "capabilities": {
+        "light": true,
+        "occupancy": true
+      }
     },
     {
       "name": "TRH",
-      "capability": 6,
-      "prod_code": 0
+      "prod_code": "0",
+      "capabilities": {
+        "temperature": true,
+        "humidity": true
+      }
     },
     {
       "name": "WIO",
-      "capability": 256,
-      "prod_code": 0
+      "prod_code": "0",
+      "capabilities": {
+        "digital_io": true,
+        "num_analog_channels": 2
+      }
+
     },
     {
       "name": "Generic Light",
-      "capability": 1,
-      "prod_code": 0
+      "prod_code": "0",
+      "capabilities": {
+        "light": true
+      }
+
     },
     {
       "name": "Generic Temp Sensor",
-      "capability": 2,
-      "prod_code": 0
+      "prod_code": "0",
+      "capabilities": {
+        "temperature": true
+      }
+
     },
     {
       "name": "Generic Humidity Sensor",
-      "capability": 4,
-      "prod_code": 0
+      "prod_code": "0",
+      "capabilities": {
+        "humidity": true
+      }
+
     },
     {
       "name": "Generic Pressure Meter",
-      "capability": 8,
-      "prod_code": 0
+      "prod_code": "0",
+      "capabilities": {
+        "pressure": true
+      }
+
     },
     {
       "name": "Generic Power Meter",
-      "capability": 16,
-      "prod_code": 0
+      "prod_code": "0",
+      "capabilities": {
+        "power": true
+      }
+
     },
     {
       "name": "Generic Keypad",
-      "capability": 32,
-      "prod_code": 0
+      "prod_code": "0",
+      "capabilities": {
+        "keypad": true
+      }
+
     },
     {
       "name": "Generic Flow Meter",
-      "capability": 64,
-      "prod_code": 0
+      "prod_code": "0",
+      "capabilities": {
+        "flow": true
+      }
+
     },
     {
       "name": "Generic Leak Sensor",
-      "capability": 128,
-      "prod_code": 0
-    },
-    {
-      "name": "Generic Leak Sensor",
-      "capability": 128,
-      "prod_code": 0
+      "prod_code": "0",
+      "capabilities": {
+        "leak": true
+      }
     }
   ]
 }
