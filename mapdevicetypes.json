@@ -1,0 +1,53 @@
+{
+  "Version": 1,
+  "Types": [
+    {
+      "name": "SCN",
+      "capability": 1
+    },
+    {
+      "name": "TRH",
+      "capability": 6
+    },
+    {
+      "name": "WIO",
+      "capability": 256
+    },
+    {
+      "name": "Generic Light",
+      "capability": 1
+    },
+    {
+      "name": "Generic Temp Sensor",
+      "capability": 2
+    },
+    {
+      "name": "Generic Humidity Sensor",
+      "capability": 4
+    },
+    {
+      "name": "Generic Pressure Meter",
+      "capability": 8
+    },
+    {
+      "name": "Generic Power Meter",
+      "capability": 16
+    },
+    {
+      "name": "Generic Keypad",
+      "capability": 32
+    },
+    {
+      "name": "Generic Flow Meter",
+      "capability": 64
+    },
+    {
+      "name": "Generic Leak Sensor",
+      "capability": 128
+    },
+    {
+      "name": "Generic Leak Sensor",
+      "capability": 128
+    }
+  ]
+}
