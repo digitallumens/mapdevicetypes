@@ -3,9 +3,8 @@ package mapdevicetypes
 // Test mapdevicetypes by running `go test` (or `go test -v`)
 
 import (
-	"testing"
-
 	"github.com/stretchr/testify/assert"
+	"testing"
 )
 
 func TestHasCapability(t *testing.T) {

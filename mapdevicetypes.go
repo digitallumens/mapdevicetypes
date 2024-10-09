@@ -16,7 +16,7 @@ var embeddedFile embed.FS
 
 const DeviceTypesFileName = "mapdevicetypes.json"
 
-// Device capability attributes bitfield
+// Device capability attributes
 const (
 	capabilityLight             = "light"
 	capabilityOccupancy         = "occupancy"
@@ -39,8 +39,27 @@ type DeviceType struct {
 }
 
 type DeviceTypes struct {
-	Version int
+	Version int // must be > 0
 	Types   []DeviceType
+}
+
+func Init() bool {
+	// Only if we haven't already done the global init
+	if deviceTypes.Version == 0 {
+		var err error
+		var bytes []byte
+		bytes, err = embeddedFile.ReadFile(DeviceTypesFileName)
+		if err != nil {
+			fmt.Printf("%s\n", err)
+			return false
+		}
+		err = json.Unmarshal(bytes, &deviceTypes)
+		if err != nil {
+			fmt.Printf("%s\n", err)
+			return false
+		}
+	}
+	return true
 }
 
 func GetDeviceType(name string) (dt DeviceType, err error) {
@@ -133,23 +152,4 @@ func GetCapabilityIntValue(deviceName, capability string) (int, error) {
 		}
 	}
 	return -1, fmt.Errorf("Capability %q for %q could not convert to float64", capability, deviceName)
-}
-
-func Init() bool {
-	// Only if we haven't already done the global init
-	if deviceTypes.Version == 0 {
-		var err error
-		var bytes []byte
-		bytes, err = embeddedFile.ReadFile(DeviceTypesFileName)
-		if err != nil {
-			fmt.Printf("%s\n", err)
-			return false
-		}
-		err = json.Unmarshal(bytes, &deviceTypes)
-		if err != nil {
-			fmt.Printf("%s\n", err)
-			return false
-		}
-	}
-	return true
 }
