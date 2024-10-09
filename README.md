@@ -38,12 +38,12 @@ type DeviceTypes struct {
 
 **Usage:**
 
-`GetCapabilities` returns all capabilities for a device in an interface{}
+`GetCapabilities` returns all capabilities for a device in an `interface{}`
 
-`HasCapability` checks whether a specific capability exists for a device
+`HasCapability` returns whether a specific capability exists for a device as a `bool`
 
-`CapabilityIsTrue` checks whether a specific capability is true a device
+`CapabilityIsTrue` returns whether a specific capability is true for a device as a `bool`
 
-`GetCapabilityValue` returns a specific capability in an interface{}
+`GetCapabilityValue` returns a specific capability in an `interface{}`
 
-`GetCapabilityIntValue` returns a specific capability as an int if it exists
+`GetCapabilityIntValue` returns a specific capability as an `int`
