@@ -2,7 +2,7 @@
   "Version": 1,
   "Types": [
     {
-      "name": "SCN",
+      "name": "SCN Family",
       "prod_code": "0",
       "capabilities": {
         "light": true,
@@ -10,7 +10,15 @@
       }
     },
     {
-      "name": "TRH",
+      "name": "DLA Family",
+      "prod_code": "0",
+      "capabilities": {
+        "light": true,
+        "occupancy": true
+      }
+    },
+    {
+      "name": "SWN-TRH",
       "prod_code": "0",
       "capabilities": {
         "temperature": true,
@@ -18,11 +26,19 @@
       }
     },
     {
-      "name": "WIO",
+      "name": "SWN-WIO",
       "prod_code": "0",
       "capabilities": {
         "digital_io": true,
         "num_analog_channels": 2
+      }
+
+    },
+    {
+      "name": "SCN-KPD",
+      "prod_code": "0",
+      "capabilities": {
+        "keypad": true
       }
 
     },
@@ -46,6 +62,15 @@
       "name": "Generic Humidity Sensor",
       "prod_code": "0",
       "capabilities": {
+        "humidity": true
+      }
+
+    },
+    {
+      "name": "Generic Temp/RH Sensor",
+      "prod_code": "0",
+      "capabilities": {
+        "temperature": true,
         "humidity": true
       }
 
