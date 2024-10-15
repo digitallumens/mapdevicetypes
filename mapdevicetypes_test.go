@@ -38,4 +38,9 @@ func TestHasCapability(t *testing.T) {
 	ct, err := GetCapabilityIntValue("SWN-WIO", capabilityNumAnalogChannels)
 	assert.Nil(t, err)
 	assert.Equal(t, ct, 2, "SWN-WIO should have capabilityNumAnalogChannels = 2")
+
+	// test Unspecified Device
+	b, err = CapabilityIsTrue("Unspecified Device", capabilityTemperature)
+	assert.NotNil(t, err)
+	assert.Equal(t, b, false, "Unspecified Device Temp capability should be false")
 }

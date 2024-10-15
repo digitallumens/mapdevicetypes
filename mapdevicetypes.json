@@ -113,6 +113,12 @@
       "capabilities": {
         "leak": true
       }
+    },
+    {
+      "name": "Unspecified Device",
+      "prod_code": "0",
+      "capabilities": {
+      }
     }
   ]
 }
