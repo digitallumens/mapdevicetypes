@@ -15,6 +15,7 @@ var deviceTypes DeviceTypes
 var embeddedFile embed.FS
 
 const DeviceTypesFileName = "mapdevicetypes.json"
+const UnspecifiedDeviceTypeName = "Unspecified Device"
 
 // Device capability attributes
 const (
@@ -60,6 +61,10 @@ func Init() bool {
 		}
 	}
 	return true
+}
+
+func GetUnspecifiedDevice() (dt DeviceType, err error) {
+	return GetDeviceType(UnspecifiedDeviceTypeName)
 }
 
 func GetDeviceType(name string) (dt DeviceType, err error) {
