@@ -79,6 +79,13 @@ func GetDeviceType(name string) (dt DeviceType, err error) {
 	return dt, fmt.Errorf("Device %q not found", name)
 }
 
+func GetAllDeviceTypes() (dts []DeviceType, err error) {
+	if !Init() {
+		return nil, fmt.Errorf("Init failed")
+	}
+	return deviceTypes.Types, nil
+}
+
 func GetCapabilities(name string) (interface{}, error) {
 	if !Init() {
 		return nil, fmt.Errorf("Init failed")
@@ -89,6 +96,19 @@ func GetCapabilities(name string) (interface{}, error) {
 		}
 	}
 	return nil, fmt.Errorf("Device %q not found", name)
+}
+
+func GetAllKnownCapabilities() (map[string]struct{}, error) {
+	if !Init() {
+		return nil, fmt.Errorf("Init failed")
+	}
+	capsMap := map[string]struct{}{}
+	for _, dt := range deviceTypes.Types {
+		for cap, _ := range dt.Capabilities {
+			capsMap[cap] = struct{}{}
+		}
+	}
+	return capsMap, nil
 }
 
 func HasCapability(deviceName, capability string) (bool, error) {
