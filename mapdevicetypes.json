@@ -115,6 +115,13 @@
       }
     },
     {
+      "name": "Generic Vibration Sensor",
+      "prod_code": "0",
+      "capabilities": {
+        "vibration": true
+      }
+    },
+    {
       "name": "Unspecified Device",
       "prod_code": "0",
       "capabilities": {

@@ -28,6 +28,7 @@ const (
 	capabilityKeypad            = "keypad"
 	capabilityFlow              = "flow"
 	capabilityLeak              = "leak"
+	capabilityVibration         = "vibration"
 	capabilityDigitalIO         = "digital_io"
 	capabilityNumAnalogChannels = "num_analog_channels"
 	capabilityNumADCChannels    = "num_adc_channels"
