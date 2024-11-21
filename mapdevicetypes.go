@@ -19,19 +19,19 @@ const UnspecifiedDeviceTypeName = "Unspecified Device"
 
 // Device capability attributes
 const (
-	capabilityLight             = "light"
-	capabilityOccupancy         = "occupancy"
-	capabilityTemperature       = "temperature"
-	capabilityHumidity          = "humidity"
-	capabilityPressure          = "pressure"
-	capabilityPower             = "power"
-	capabilityKeypad            = "keypad"
-	capabilityFlow              = "flow"
-	capabilityLeak              = "leak"
-	capabilityVibration         = "vibration"
-	capabilityDigitalIO         = "digital_io"
-	capabilityNumAnalogChannels = "num_analog_channels"
-	capabilityNumADCChannels    = "num_adc_channels"
+	CapabilityLight             = "light"
+	CapabilityOccupancy         = "occupancy"
+	CapabilityTemperature       = "temperature"
+	CapabilityHumidity          = "humidity"
+	CapabilityPressure          = "pressure"
+	CapabilityPower             = "power"
+	CapabilityKeypad            = "keypad"
+	CapabilityFlow              = "flow"
+	CapabilityLeak              = "leak"
+	CapabilityVibration         = "vibration"
+	CapabilityDigitalIO         = "digital_io"
+	CapabilityNumAnalogChannels = "num_analog_channels"
+	CapabilityNumADCChannels    = "num_adc_channels"
 )
 
 type DeviceType struct {
