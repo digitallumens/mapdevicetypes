@@ -1,6 +1,6 @@
 # map-device-types
 
-This package tracks known/supported Zigbee3 Devices and their capabilities for SiteWorx.
+This package tracks known/supported Zigbee3 Devices and their Attributes for SiteWorx.
 Data comes from the `mapdevicetypes.json` file, which is consumed/served by the package.
 
 `CommissionerZ` will use the json file for map creation, and `site-editor` and `siteworx-cli` will use the information for map uploading and remote commissioning information respectively.
@@ -8,26 +8,26 @@ Data comes from the `mapdevicetypes.json` file, which is consumed/served by the 
 **Structure:**
 
 ```
-// Device capability attributes
+// Device attributes
 const (
-	capabilityLight             = "light"
-	capabilityOccupancy         = "occupancy"
-	capabilityTemperature       = "temperature"
-	capabilityHumidity          = "humidity"
-	capabilityPressure          = "pressure"
-	capabilityPower             = "power"
-	capabilityKeypad            = "keypad"
-	capabilityFlow              = "flow"
-	capabilityLeak              = "leak"
-	capabilityDigitalIO         = "digital_io"
-	capabilityNumAnalogChannels = "num_analog_channels"
-	capabilityNumADCChannels    = "num_adc_channels"
+	attributeLight             = "light"
+	attributeOccupancy         = "occupancy"
+	attributeTemperature       = "temperature"
+	attributeHumidity          = "humidity"
+	attributePressure          = "pressure"
+	attributePower             = "power"
+	attributeKeypad            = "keypad"
+	attributeFlow              = "flow"
+	attributeLeak              = "leak"
+	attributeDigitalIO         = "digital_io"
+	attributeNumAnalogChannels = "num_analog_channels"
+	attributeNumADCChannels    = "num_adc_channels"
 )
 
 type DeviceType struct {
 	Name         string                 `json:"name"`
 	ProdCode     string                 `json:"prod_code"`
-	Capabilities map[string]interface{} `json:"capabilities"`
+	Attributes map[string]interface{}   `json:"attributes"`
 }
 
 type DeviceTypes struct {
@@ -38,12 +38,16 @@ type DeviceTypes struct {
 
 **Usage:**
 
-`GetCapabilities` returns all capabilities for a device in an `interface{}`
+`Init` loads all DeviceTypes from mapdevicetypes.json if it's not been done yet
 
-`HasCapability` returns whether a specific capability exists for a device as a `bool`
+`GetDeviceType` returns a specific DeviceType by name
 
-`CapabilityIsTrue` returns whether a specific capability is true for a device as a `bool`
+`GetAllDeviceTypes` returns all known DeviceTypes
 
-`GetCapabilityValue` returns a specific capability in an `interface{}`
+`GetAttributes` returns the Attributes for a given DeviceType
 
-`GetCapabilityIntValue` returns a specific capability as an `int`
+`GetAllKnownAttributes` returns all known Attributes
+
+`HasAttribute` returns true if a given DeviceType has an attribute (whether true or false)
+
+`AttributeIsTrue` returns true if a given DeviceType's attribute is true

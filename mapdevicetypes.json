@@ -6,7 +6,8 @@
             "attributes": {
                 "light": true,
                 "occupancy sensing": true,
-                "daylight harvesting": true
+                "daylight harvesting": true,
+                "asset tracking": true
             }
         },
         {
