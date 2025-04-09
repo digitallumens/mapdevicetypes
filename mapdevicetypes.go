@@ -15,7 +15,7 @@ var deviceTypes DeviceTypes
 var embeddedFile embed.FS
 
 const DeviceTypesFileName = "mapdevicetypes.json"
-const UnspecifiedDeviceTypeName = "Unspecified Device"
+const GenericNodeDeviceTypeName = "Generic Node" // has no attrs
 
 type DeviceType struct {
 	Name       string                 `json:"name"`
