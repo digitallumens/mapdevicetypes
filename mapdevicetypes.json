@@ -37,7 +37,7 @@
     {
       "name": "PowerTag C IO 230V (A9XMC1D3)",
       "attributes": {
-          "power metering": true
+        "power metering": true
       }
     }
   ]
