@@ -17,10 +17,10 @@ jobs:
           password: ${{ secrets.EMAIL_PASSWORD }}
           subject: Alert - mapdevicetypes.json was modified
           body: |
-            Someone pushed changes to mapdevicetypes.json in the repository.
-            
+            Someone pushed changes to mapdevicetypes.json so you need to update DLLib's copy.
+
             Commit: ${{ github.event.head_commit.url }}
             Author: ${{ github.event.head_commit.author.name }}
             Message: ${{ github.event.head_commit.message }}
-          to: your-email@example.com
-          from: GitHub Actions
+          to: rwinchester@siteworx.io
+          from: MapDeviceTypes GitHub Actions
