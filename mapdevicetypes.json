@@ -1,44 +1,44 @@
 {
-    "Version": 7,
-    "Types": [
-        {
-            "name": "SCN Family",
-            "attributes": {
-                "light": true,
-                "occupancy sensing": true,
-                "daylight harvesting": true,
-                "asset tracking": true
-            }
-        },
-        {
-            "name": "Wiser Temperature/Humidity Sensor (CCT593012)",
-            "attributes": {
-                "temperature sensing": true,
-                "humidity sensing": true,
-                "sleepy": true
-            }
-        },
-        {
-            "name": "Wiser Water Leakage Sensor (CCT592012)",
-            "attributes": {
-                "leak sensing": true,
-                "sleepy": true
-            }
-        },
-        {
-            "name": "PowerTag C IO 230V (A9XMC1D3)",
-            "attributes": {
-                "power metering": true
-            }
-        },
-        {
-            "name": "Generic Node"
-        },
-        {
-            "name": "Generic Node - Sleepy",
-            "attributes": {
-                "sleepy": true
-            }
-        }
-    ]
+  "Version": 9,
+  "Types": [
+    {
+      "name": "Generic Node"
+    },
+    {
+      "name": "Generic Node - Sleepy",
+      "attributes": {
+        "sleepy": true
+      }
+    },
+    {
+      "name": "SCN Family",
+      "attributes": {
+        "light": true,
+        "occupancy sensing": true,
+        "daylight harvesting": true,
+        "asset tracking": true
+      }
+    },
+    {
+      "name": "Wiser Temperature/Humidity Sensor (CCT593012)",
+      "attributes": {
+        "temperature sensing": true,
+        "humidity sensing": true,
+        "sleepy": true
+      }
+    },
+    {
+      "name": "Wiser Water Leakage Sensor (CCT592012)",
+      "attributes": {
+        "leak sensing": true,
+        "sleepy": true
+      }
+    },
+    {
+      "name": "PowerTag C IO 230V (A9XMC1D3)",
+      "attributes": {
+        "power metering": true
+      }
+    }
+  ]
 }
