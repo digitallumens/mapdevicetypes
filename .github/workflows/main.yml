@@ -1,0 +1,19 @@
+name: File Change Alert
+on:
+  push:
+    paths:
+      - '/mapdevicetypes.json'
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send notification
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: 1, // An existing issue to comment on
+              body: '⚠️ Warning: Someone pushed changes to mapdevicetypes.json so you'd better update the copy in DLLib!'
+            })
