@@ -42,6 +42,7 @@ const (
 	AttributeLeak              = "leak sensing"
 	AttributePressure          = "pressure sensing"
 	AttributeVibration         = "vibration sensing"
+	AttributeAirQuality        = "air quality"
 	AttributeAssetTracking     = "asset tracking"
 	AttributePushButton        = "push button"
 	AttributeLoadControl       = "load control"
