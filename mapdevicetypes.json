@@ -38,6 +38,18 @@
       "name": "PowerTag C IO 230V (A9XMC1D3)",
       "attributes": {
       }
+    },
+    {
+      "name": "SWN-RCP-ST",
+      "attributes": {
+        "load control": true,
+      }
+    },
+    {
+      "name": "Sunricher Power Meter (ZG9042MP)",
+      "attributes": {
+        "power metering": true,
+      }
     }
   ]
 }
