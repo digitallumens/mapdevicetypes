@@ -42,13 +42,13 @@
     {
       "name": "SWN-RCP-ST",
       "attributes": {
-        "load control": true,
+        "load control": true
       }
     },
     {
       "name": "Sunricher Power Meter (ZG9042MP)",
       "attributes": {
-        "power metering": true,
+        "power metering": true
       }
     }
   ]
