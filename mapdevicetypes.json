@@ -1,5 +1,5 @@
 {
-  "Version": 11,
+  "Version": 12,
   "Types": [
     {
       "name": "Generic Node"
@@ -37,6 +37,7 @@
     {
       "name": "PowerTag C IO 230V (A9XMC1D3)",
       "attributes": {
+        "load control": true
       }
     },
     {
