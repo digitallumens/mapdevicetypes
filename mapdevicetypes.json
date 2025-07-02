@@ -2,16 +2,19 @@
   "Version": 12,
   "Types": [
     {
-      "name": "Generic Node"
+      "name": "Generic Node",
+      "node_type": 0
     },
     {
       "name": "Generic Node - Sleepy",
+      "node_type": 0,
       "attributes": {
         "sleepy": true
       }
     },
     {
       "name": "SCN Family",
+      "node_type": 0,
       "attributes": {
         "light": true,
         "occupancy sensing": true,
@@ -21,6 +24,7 @@
     },
     {
       "name": "Wiser Temperature/Humidity Sensor (CCT593012)",
+      "node_type": 13,
       "attributes": {
         "temperature sensing": true,
         "humidity sensing": true,
@@ -29,6 +33,7 @@
     },
     {
       "name": "Wiser Water Leakage Sensor (CCT592012)",
+      "node_type": 13,
       "attributes": {
         "leak sensing": true,
         "sleepy": true
@@ -36,18 +41,21 @@
     },
     {
       "name": "PowerTag C IO 230V (A9XMC1D3)",
+      "node_type": 14,
       "attributes": {
         "load control": true
       }
     },
     {
       "name": "SWN-RCP-ST",
+      "node_type": 14,
       "attributes": {
         "load control": true
       }
     },
     {
       "name": "Sunricher Power Meter (ZG9042MP)",
+      "node_type": 15,
       "attributes": {
         "power metering": true
       }

@@ -19,6 +19,7 @@ const GenericNodeDeviceTypeName = "Generic Node" // has no attrs
 
 type DeviceType struct {
 	Name       string                 `json:"name"`
+	NodeType   int                    `json:"node_type"`
 	ProdCode   string                 `json:"prod_code"`
 	Attributes map[string]interface{} `json:"attributes"`
 }
