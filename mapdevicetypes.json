@@ -1,5 +1,5 @@
 {
-  "Version": 13,
+  "Version": 14,
   "Types": [
     {
       "name": "Generic Node",
@@ -47,7 +47,14 @@
       }
     },
     {
-      "name": "SWN-RCP-ST",
+      "name": "SWN-RCP-015-01",
+      "node_type": 14,
+      "attributes": {
+        "load control": true
+      }
+    },
+    {
+      "name": "SWN-RCP-020-01",
       "node_type": 14,
       "attributes": {
         "load control": true

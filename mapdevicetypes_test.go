@@ -34,4 +34,16 @@ func TestHasAttribute(t *testing.T) {
 	assert.Nil(t, err)
 	assert.Equal(t, b, true, "Wiser Temperature/Humidity Sensor (CCT593012) AttributeHumidity should be true")
 	assert.Equal(t, dt.NodeType, 13, "Wiser Temperature/Humidity Sensor (CCT593012) should have NodeType 13")
+
+	dt, err = GetDeviceType("SWN-RCP-015-01")
+	assert.Nil(t, err)
+	b = AttributeIsTrue(dt, AttributeLoadControl)
+	assert.Equal(t, b, true, "SWN-RCP-015-01 AttributeLoadControl should be true")
+	assert.Equal(t, dt.NodeType, 14, "SWN-RCP-015-01 should have NodeType 14")
+
+	dt, err = GetDeviceType("SWN-RCP-020-01")
+	assert.Nil(t, err)
+	b = AttributeIsTrue(dt, AttributeLoadControl)
+	assert.Equal(t, b, true, "SWN-RCP-020-01 AttributeLoadControl should be true")
+	assert.Equal(t, dt.NodeType, 14, "SWN-RCP-020-01 should have NodeType 14")
 }
